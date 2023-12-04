@@ -48,4 +48,3 @@ jobs:
       with:
         app-name: 'example-webapp'
         images: '${{ secrets.ACR_REGISTRY }}/example:latest'
-        multi-container-config-type: 'compose'
