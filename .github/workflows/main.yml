@@ -1,7 +1,3 @@
-# .github/workflows/main.yml
-
-name: CI/CD Pipeline
-
 on:
   push:
     branches:
@@ -25,17 +21,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Build Docker image
-      run: docker build -t example:latest .
-
-    - name: Login to Azure Container Registry
-      run: docker login -u ${{ secrets.ACR_USERNAME }} -p ${{ secrets.ACR_PASSWORD }} ${{ secrets.ACR_REGISTRY }}
-
-    - name: Push Docker image to Azure Container Registry
-      run: |
-        docker tag example:latest ${{ secrets.ACR_REGISTRY }}/example:latest
-        docker push ${{ secrets.ACR_REGISTRY }}/example:latest
-
   deploy:
     runs-on: ubuntu-latest
     needs: build
@@ -47,4 +32,3 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'example-webapp'
-        images: '${{ secrets.ACR_REGISTRY }}/example:latest'
