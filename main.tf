@@ -1,10 +1,10 @@
 provider "azurerm" {
-  features = {}
+  features {}
 }
 
 resource "azurerm_resource_group" "DeliveryPipeline_rg" {
   name     = "DeliveryPipeline"
-  location = "Norway East"
+  location = "West Europe"
 }
 
 resource "azurerm_virtual_network" "DeliveryPipeline_vnet" {
@@ -17,7 +17,7 @@ resource "azurerm_virtual_network" "DeliveryPipeline_vnet" {
 resource "azurerm_subnet" "DeliveryPipeline_subnet" {
   name                 = "DeliveryPipelineSubnet"
   resource_group_name  = azurerm_resource_group.DeliveryPipeline_rg.name
-  virtual_network_name = azurerm_virtual_network.DeliveryPipline_vnet.name
+  virtual_network_name = azurerm_virtual_network.DeliveryPipeline_vnet.name
   address_prefixes     = ["10.0.1.0/24"]
 }
 
