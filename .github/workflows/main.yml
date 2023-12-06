@@ -5,7 +5,8 @@ on:
     branches:
       - main
     paths:
-      - "app/**"  
+      - "app/**" 
+      - "test/**"   
 
 jobs:
   build:
@@ -44,7 +45,7 @@ jobs:
 
     - name: Run tests
       run: |
-        python -m unittest test.py
+       python -m unittest discover -s test -p '*test*.py'
 
 
   deploy:
