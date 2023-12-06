@@ -5,8 +5,7 @@ on:
     branches:
       - main
     paths:
-      - "app/**" 
-      - "test/**"   
+      - "app/**"   
 
 permissions:
     id-token: write
