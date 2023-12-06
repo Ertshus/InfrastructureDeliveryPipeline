@@ -14,7 +14,7 @@ class AppTestCase(unittest.TestCase):
         response = tester.get("/", content_type="html/text")
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
-            response.data, "Hello, World!!!!!!"
+            response.data, "Hello, World!!!!!!!"
         )
 
     def test_default(self):
@@ -24,5 +24,5 @@ class AppTestCase(unittest.TestCase):
         self.assertTrue(b"does not exist" in response.data)
 
 
-if name == "main":
+if __name__ == "__main__":
     unittest.main()
