@@ -62,4 +62,4 @@ jobs:
       with:
         app-name: 'DeliveryPipelineAppService'
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-        package: "app"
+        package: "."
