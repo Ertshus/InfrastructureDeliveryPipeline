@@ -1,12 +1,24 @@
 import unittest
 from app import app
 
-class AppTestCase(unittest.TestCase):
-  def test_index(self):
-    tester = app.client(self)
-    response = tester.get('/', content_type='html/text')
-    self.assertEqual(response.status_code, 200)
-    self.assertEqual(response.data, b'Hello World!!!!!!!!!')
+class TestApp(unittest.TestCase):
+
+    def setUp(self):
+        # Create a test client
+        self.app = app.test_client()
+        # Create a test context
+        self.app_context = app.app_context()
+        self.app_context.push()
+
+    def tearDown(self):
+        # Clean up the test context
+        self.app_context.pop()
+
+    def test_web_service_connection(self):
+        # Ensure the Flask app is running and responds to requests
+        response = self.app.get('/')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(b'Hello World!!!!!!!!!!', response.data)
 
 if __name__ == '__main__':
   unittest.main()
