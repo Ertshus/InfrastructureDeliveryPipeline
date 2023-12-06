@@ -39,7 +39,6 @@ resource "azurerm_network_security_rule" "DeliveryPipeline_nsg_rule" {
   destination_address_prefix  = "*"
   resource_group_name         = azurerm_resource_group.DeliveryPipeline_rg.name
   network_security_group_name = azurerm_network_security_group.DeliveryPipeline_nsg.name
-
 }
 
 resource "azurerm_subnet_network_security_group_association" "DeliveryPipeline_subnet_nsg_association" {
