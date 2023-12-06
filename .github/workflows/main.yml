@@ -44,7 +44,7 @@ jobs:
 
     - name: Run tests
       run: |
-        python -m unittest app.test.py
+        python -m unittest test.py
 
 
   deploy:
