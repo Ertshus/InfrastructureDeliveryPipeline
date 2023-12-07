@@ -1,13 +1,6 @@
 import unittest
 from app import app
 
-
-"""
-Tests that the HTTP packet recieved is OK status code 200.
-
-"""
-
-
 class AppTestCase(unittest.TestCase):
     def test_index(self):
         tester = app.test_client(self)
